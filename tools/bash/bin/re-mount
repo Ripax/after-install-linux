@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+# Define some colors
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+CYAN='\033[0;36m'
+YELLOW='\033[1;33m'
+RED='\033[0;31m'
+RESET='\033[0m'  # Reset color to default
+
+# Function to check if the partition size is approximately 1.8TB
+check_partition_size() {
+  local device=$1
+  local expected_size=$2
+
+  # Get the size of the partition in TB using lsblk and awk
+  local size=$(lsblk -b -o SIZE -d $device | tail -n 1)
+
+  # Convert the size to TB (divide by 1TB, 1TB = 1024^4 bytes)
+  local size_in_tb=$(echo "$size / 1099511627776" | bc -l)
+
+  # Check if the size is approximately equal to the expected size
+  local tolerance=0.1  # Tolerance in TB (e.g., allow ±100GB)
+  local lower_bound=$(echo "$expected_size - $tolerance" | bc)
+  local upper_bound=$(echo "$expected_size + $tolerance" | bc)
+
+  if (( $(echo "$size_in_tb >= $lower_bound" | bc -l) && $(echo "$size_in_tb <= $upper_bound" | bc -l) )); then
+    return 0  # Size is correct
+  else
+    return 1  # Size is not correct
+  fi
+}
+
+# Display a message about mounting Windows 11
+echo -e "${YELLOW}Mounting Windows 11 in /jobs/windows...${RESET}"
+sudo ntfs-3g /dev/nvme0n1p3 /jobs/windows/ && echo -e "${GREEN}Successfully mounted Windows 11.${RESET}" || echo -e "${RED}Failed to mount Windows 11.${RESET}"
+
+# Check the size of /dev/sdd1 before mounting it
+expected_size=1.8  # Expected size in TB
+if check_partition_size "/dev/sdd1" $expected_size; then
+  # Display a message about mounting the 2TB External Drive
+  echo -e "${YELLOW}Mounting the 2TB External Drive in /jobs/2tbBuckups...${RESET}"
+  sudo ntfs-3g /dev/sdd1 /jobs/2tbBuckups && echo -e "${GREEN}Successfully mounted 2TB External Drive.${RESET}" || echo -e "${RED}Failed to mount 2TB External Drive.${RESET}"
+else
+  echo -e "${RED}Error: /dev/sdd1 size does not match the expected 1.8TB (actual size may be $size_in_tb TB). Aborting mount.${RESET}"
+fi
+
+# Done message
+echo -e "${CYAN}Done.${RESET}"

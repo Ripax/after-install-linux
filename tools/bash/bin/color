@@ -1,0 +1,56 @@
+#!/bin/bash
+# Author - Anupam Biswas
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+# If not running interactively, don't do anything
+
+#C0C0C0
+resize -s 45 70
+printf '\e]11;#BCD090\a'
+clear
+echo -e "${txtgrn}"
+/bin/cat <<'HTMLDigger'
+*****************************************
+*    ╦ ╦╔╦╗╔╦╗╦  ╔╦╗┬┌─┐┌─┐┌─┐┬─┐       *
+*    ╠═╣ ║ ║║║║   ║║││ ┬│ ┬├┤ ├┬┘       *
+*    ╩ ╩ ╩ ╩ ╩╩═╝═╩╝┴└─┘└─┘└─┘┴└─.in    *
+*****************************************
+HTMLDigger
+echo -e "${txtrst}"
+echo -e "${txtylw}"
+echo -e "*****************************************************************"
+echo -e "******************* Printing a colored output *******************"
+echo -e "*****************************************************************"
+echo -e "${txtrst}"
+echo -e ""
+echo -e "${txtblk}******************* Regular *******************${txtrst}"
+echo -e ""
+echo -e "${txtblk}txtblk \e[0m # Black - Regular"
+echo -e "${txtred}txtred \e[0m # Red - Regular"
+echo -e "${txtgrn}txtgrn \e[0m # Green - Regular"
+echo -e "${txtylw}txtylw \e[0m # Yellow - Regular"
+echo -e "${txtblu}txtblu \e[0m # Blue - Regular"
+echo -e "${txtpur}txtpur \e[0m # Purple - Regular"
+echo -e "${txtcyn}txtcyn \e[0m # Cyan - Regular"
+echo -e "${txtwht}txtwht \e[0m # White - Regular"
+echo -e ""
+echo -e "${txtblk}******************* Bold *******************${txtrst}"
+echo -e ""
+echo -e "${bldblk}bldblk \e[0m # Black - Bold"
+echo -e "${bldred}bldred \e[0m # Red - Bold"
+echo -e "${bldgrn}bldgrn \e[0m # Green - Bold"
+echo -e ""
+echo -e "${txtblk}****************** Underline ***************${txtrst}"
+echo -e ""
+echo -e "${undblk}undblk \e[0m # Black - Underline"
+echo -e "${undred}undred \e[0m # Red - Underline"
+echo -e ""
+echo -e "${txtblk}****************** Background ***************${txtrst}"
+echo -e ""
+echo -e "${bakblk}bakblk \e[0m # Black - Background"
+echo -e "${bakred}bakred \e[0m # Red - Background"
+echo -e "${badgrn}badgrn \e[0m # Green - Background"
+echo -e "${txtrst}txtrst \e[0m# Text Reset"
+echo -e ""
+echo -e ""

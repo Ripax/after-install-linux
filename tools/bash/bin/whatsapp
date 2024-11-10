@@ -1,0 +1,28 @@
+#!/bin/sh
+# Author - Anupam Biswas
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+
+# If not running interactively, don't do anything
+
+resize -s 25 95
+printf '\e]11;#009688\a'
+
+clear
+/bin/cat <<'HTMLDigger'
+*****************************************
+*    ╦ ╦╔╦╗╔╦╗╦  ╔╦╗┬┌─┐┌─┐┌─┐┬─┐       *
+*    ╠═╣ ║ ║║║║   ║║││ ┬│ ┬├┤ ├┬┘       *
+*    ╩ ╩ ╩ ╩ ╩╩═╝═╩╝┴└─┘└─┘└─┘┴└─.in    *
+*****************************************
+HTMLDigger
+tput setaf 3
+
+python /home/rion/PycharmProjects/test/whatsapp_v001.py
+
+notify-send "HI $USER " "whatsapp is running. ""$(date)" -u critical -i /home/rion/PycharmProjects/test/assets/logo.png
+
+# importaint note.
+#notify-send Date "`date`"
+#notify-send Disk "`df / -H`"

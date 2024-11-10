@@ -1,0 +1,28 @@
+#!/bin/bash
+#
+# AutoNSE - Massive NSE Autosploit/Autoscanner
+# Momo Outaadi (M4ll0k)
+# https://github.com/m4ll0k
+
+# --colors--
+red='\e[1;31m'
+blue='\e[1;34m'
+white='\e[0;38m'
+green='\e[1;32m'
+yellow='\e[1;33m'
+reset_c='\e[0m'
+# --tool var--
+name='AutoNSE'
+version='v0.2.0'
+author='Momo Outaadi (m4ll0k)'
+repository='https://github.com/m4ll0k'
+description='AutoNSE is very powerfull script for penitesting script\nBy HTMLDigger'
+clear
+
+echo -e $white"-------------------------------------------------------"$reset_c
+echo -e $blue"$description                            "$reset_c
+echo -e $green"$name - $version                        "$reset_c
+echo -e $yellow"$author                                 "$reset_c
+echo -e $red"$repository                             "$reset_c
+echo -e $white"-------------------------------------------------------"$reset_c
+

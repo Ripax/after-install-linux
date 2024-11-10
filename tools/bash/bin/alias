@@ -1,0 +1,9 @@
+#! /bin/bash
+# some more ls aliases
+#alias \!="read -p" \!
+
+
+alias work="cd $HOME/MyWorks/bash/bin ; work ; PS1='\[\e[1;36m\][\u@\W]>\[\e[0m\]'"
+alias con="mkdir -p $HOME/Desktop/test/usr/people/!\:1/config"
+
+alias dnegvpn="sudo openvpn --config /software/vpn/mumbai"

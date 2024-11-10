@@ -1,0 +1,63 @@
+#!/bin/bash
+# Author - Anupam Biswas
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+# If not running interactively, don't do anything
+
+resize -s 30 150
+printf '\e]11;#4D5A5E\a'
+clear
+/bin/cat <<'HTMLDigger'
+*****************************************
+*    ╦ ╦╔╦╗╔╦╗╦  ╔╦╗┬┌─┐┌─┐┌─┐┬─┐       *
+*    ╠═╣ ║ ║║║║   ║║││ ┬│ ┬├┤ ├┬┘       *
+*    ╩ ╩ ╩ ╩ ╩╩═╝═╩╝┴└─┘└─┘└─┘┴└─.in    *
+*****************************************
+HTMLDigger
+tput setaf 3
+
+# Function to open Nuke or NukeX with a specific version
+open_nuke() {
+  local version=$1
+  local mode=$2
+  
+  # Define the path to the Nuke installation directory
+  NUKE_DIR="$SOFTWARE/nuke/${version}"
+  echo -e "$NUKE_DIR"
+
+  # Check if the Nuke version directory exists
+  if [ ! -d "$NUKE_DIR" ]; then
+    echo "Nuke version $version not found in $SOFTWARE"
+    exit 1
+  fi
+
+  # Choose between Nuke and NukeX
+  if [[ "$mode" == "nukex" ]]; then
+    "${NUKE_DIR}/Nuke${version%%v*}" --nukex &
+  else
+    "${NUKE_DIR}/Nuke${version%%v*}"&
+  fi
+}
+
+# Check if --ver argument is provided
+if [[ "$1" != "--ver" ]]; then
+  echo "Usage: $0 --ver <version> [--nukex]"
+  exit 1
+fi
+
+# Check if version argument is provided
+if [[ -z "$2" ]]; then
+  echo "Usage: $0 --ver <version> [--nukex]"
+  exit 1
+fi
+
+# Determine if NukeX should be launched
+if [[ "$3" == "--nukex" ]]; then
+  MODE="nukex"
+else
+  MODE="nuke"
+fi
+
+# Pass the version and mode arguments to the function
+open_nuke "$2" "$MODE"

@@ -1,0 +1,44 @@
+#! /usr/bin/env bash
+
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+
+############################## banner ######################################
+source "$HOME/tools/bash/baner.sh"
+clear
+
+NOWDATE=$(date +"%m-%d-%Y")
+NOWTIME=$(date +"%r")
+########################### Adding Figlet text #############################
+
+HTbaner() {
+    # Print my Banner.
+    echo -e "********************************************"
+    echo -e "*       ╦ ╦╔╦╗╔╦╗╦  ╔╦╗┬┌─┐┌─┐┌─┐┬─┐       *"
+    echo -e "*       ╠═╣ ║ ║║║║   ║║││ ┬│ ┬├┤ ├┬┘       *"
+    echo -e "*       ╩ ╩ ╩ ╩ ╩╩═╝═╩╝┴└─┘└─┘└─┘┴└─       *"
+    echo -e "********************************************"
+    echo "${NOWDATE} ${NOWTIME}"
+    echo ""
+
+}
+
+HTbaner | lolcat
+
+home=${HOME}
+
+PATH=$PATH:'/software/tools/bin'
+source "$HOME/tools/bash/bin/color.sh"
+source "$HOME/tools/bash/bin/alias"
+
+####################### LOCAL Software folder ################################
+export TOOLS="${HOME}/tools/"
+export THEMES="/tools/ohmyposh/themes"
+export SOFTWARE="/software"
+
+####################### LOCAL env added BY HTMLDigger ########################
+export PATH=$PATH:"$HOME/tools/bash/bin"
+
+####################### Oh-my-posh custom themes ########################
+eval "$(oh-my-posh init bash --config $THEMES/material.omp.json)"

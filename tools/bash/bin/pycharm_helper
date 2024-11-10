@@ -1,0 +1,19 @@
+REPO_URL="https://github.com/Ripax/Authenticator.git"
+
+
+pre_install:
+	@if [ ! -d "$(.TEMP)" ]; then \
+		echo "Creating temp directory."; \
+		mkdir -p "$(.TEMP)"; \
+	fi
+
+	@if [ ! -d "$(.TEMP)/.git" ]; then \
+		echo "Cloning repository..."; \
+		git clone "$(REPO_URL)" "$(.TEMP)"; \
+	else \
+		echo "Repository already exists. Pulling the latest changes..."; \
+		git -C "$(.TEMP)" pull; \
+	fi
+
+
+

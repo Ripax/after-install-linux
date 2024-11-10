@@ -1,0 +1,23 @@
+#!/bin/sh
+# Author - Anupam Biswas
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+
+# If not running interactively, don't do anything
+
+resize -s 25 95
+printf '\e]11;#2E3436\a'
+
+cp /home/rion/HTMLDiggerPictures/.icon.png $HOME/Pictures/.icon.png
+clear
+/bin/cat <<'HTMLDigger'
+*****************************************
+*    ╦ ╦╔╦╗╔╦╗╦  ╔╦╗┬┌─┐┌─┐┌─┐┬─┐       *
+*    ╠═╣ ║ ║║║║   ║║││ ┬│ ┬├┤ ├┬┘       *
+*    ╩ ╩ ╩ ╩ ╩╩═╝═╩╝┴└─┘└─┘└─┘┴└─.in    *
+*****************************************
+HTMLDigger
+tput setaf 3
+
+sudo /usr/local/foundry/LicensingTools7.1/FoundryLicenseUtility -s start -t RLM

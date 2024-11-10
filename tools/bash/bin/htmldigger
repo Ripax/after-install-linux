@@ -1,0 +1,21 @@
+#!/bin/sh
+# Author - Anupam Biswas
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+# If not running interactively, don't do anything
+
+clear
+echo ""
+if [ -d "~/config.text" ]; then
+    echo "Hi $USER You are allready configure your sustem"
+else
+    echo "Hi $USER Sorry you have to configure your system first tnks."
+fi
+echo ""
+#if [[ ${EUID} == 0 ]]; then
+PS1='\e[1;31;48;5;234m\u \e[38;5;240mon \e[1;38;5;28;48;5;234m\h \e[38;5;54m\d \@\e[0m\n\e[0;31;48;5;234m[\w] \e[1m\$\e[0m '
+#else
+#    export PS1='\e[1;38;5;56;48;5;234m\u \e[38;5;240mon \e[1;38;5;28;48;5;234m\h \e[38;5;54m\d \@\e[0m\n\e[0;38;5;56;48;5;234m[\w] \e[1m\$\e[0m '
+#fi
+#echo ""
