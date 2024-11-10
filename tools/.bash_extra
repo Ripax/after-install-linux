@@ -26,8 +26,6 @@ HTbaner() {
 
 HTbaner | lolcat
 
-home=${HOME}
-
 PATH=$PATH:'/software/tools/bin'
 source "$HOME/tools/bash/bin/color.sh"
 source "$HOME/tools/bash/bin/alias"
